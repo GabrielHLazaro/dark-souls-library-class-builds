@@ -25,7 +25,7 @@
 
 - Força: Atributo que determina a escala de dano de armas pesadas/retas
 
-- Agilidade: Atributo que determina a escala de dano de armas leves/curvas
+- Destreza: Atributo que determina a escala de dano de armas leves/curvas
 
 - Sorte: Atributo que influência diretamente a descoberta de itens, a chance de armas causarem efeitos como sangramento e a resistência contra maldições
 

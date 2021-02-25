@@ -33,4 +33,8 @@ public class Despojado implements Personagem{
     public Integer getAtributosFocados() {
         return atributosFocados;
     }
+
+    public Integer getSoulLevel(){
+        return calcSoulLevel();
+    }
 }

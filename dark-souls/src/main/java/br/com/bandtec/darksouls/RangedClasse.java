@@ -55,4 +55,8 @@ public class RangedClasse extends Classe{
     public String getMagias() {
         return magias;
     }
+
+    public Integer getSoulLevel(){
+        return calcSoulLevel();
+    }
 }

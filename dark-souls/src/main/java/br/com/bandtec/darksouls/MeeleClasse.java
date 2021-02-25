@@ -33,4 +33,8 @@ public class MeeleClasse extends Classe{
     public String getArmadura() {
         return armadura;
     }
+
+    public Integer getSoulLevel(){
+        return calcSoulLevel();
+    }
 }
