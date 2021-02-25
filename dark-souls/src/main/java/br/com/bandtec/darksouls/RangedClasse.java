@@ -8,7 +8,7 @@ public class RangedClasse extends Classe{
     private Integer inteligencia;
     private Integer fe;
     private String canalizador;
-    private List<String> magias;
+    private String magias;
 
     public RangedClasse(String nome, String dificuldade, String descricao, String arma,
                         Integer vigor, Integer fortitude, Integer vitalidade, Integer forca,
@@ -19,7 +19,7 @@ public class RangedClasse extends Classe{
         this.inteligencia = inteligencia;
         this.fe = fe;
         this.canalizador = canalizador;
-        this.magias = new ArrayList<>();
+        this.magias = magias;
     }
 
     @Override
@@ -52,7 +52,7 @@ public class RangedClasse extends Classe{
         return canalizador;
     }
 
-    public List<String> getMagias() {
+    public String getMagias() {
         return magias;
     }
 }

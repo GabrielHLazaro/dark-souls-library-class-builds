@@ -17,4 +17,20 @@ public class Despojado implements Personagem{
     public Integer calcSoulLevel() {
         return 5 + atributosFocados;
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getDificuldade() {
+        return dificuldade;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public Integer getAtributosFocados() {
+        return atributosFocados;
+    }
 }
