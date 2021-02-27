@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/personagem")
@@ -17,7 +18,7 @@ public class PersonagemController {
         personagens.add(new Despojado("sl0", "profissional",
                 "zerar o jogo sem colocar pontos no personagem", 0));
 
-        personagens.add(new MeeleClasse("Cavaleiro", "mediana",
+        personagens.add(new MeeleClasse("cavaleiro parrudo", "mediana",
                 "classe de cavaleiro tanque, focada em força e defesa",
                 "espada grande da fumaça", 30, 3, 30, 30, 2, 0,
                 "espada grande", "armadura de cavaleiro negro"));
@@ -32,7 +33,7 @@ public class PersonagemController {
                 "dente de dragão", 30, 2, 35, 40, 0, 0,
                 "arma pesada", "armadura de catarina"));
 
-        personagens.add(new MeeleClasse("cavaleiro", "iniciante",
+        personagens.add(new MeeleClasse("cavaleiro basico", "iniciante",
                 "cavaleiro padrão, classe perfeita para novos jogadores", "espada reta de astora",
                 20, 10, 15, 45, 10, 0, "espada reta", "qualquer"));
 
@@ -52,7 +53,7 @@ public class PersonagemController {
     }
 
     @GetMapping("/todas-builds")
-    public List<Personagem> listar() {
+    public List<Personagem> listarTodos() {
         return personagens;
 
     }
@@ -91,7 +92,7 @@ public class PersonagemController {
     }
 
     @GetMapping("/excluir-build/{posicao}")
-    public String excluir(@PathVariable int posicao){
+    public String excluirClasse(@PathVariable int posicao){
         if(posicao<=personagens.size()-1){
             personagens.remove(posicao);
             return "Build deletada com sucesso!";
@@ -99,6 +100,12 @@ public class PersonagemController {
         else{
             return "Lamento, a build que você informou não existe.";
         }
+    }
+
+    @GetMapping("/pesquisar-build/{nome}")
+    public List<Personagem> pesquisarClasse(@PathVariable String nome){
+        return personagens.stream().filter(personagem ->
+                personagem.getNome().contains(nome)).collect(Collectors.toList());
     }
 }
 
