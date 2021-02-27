@@ -1,5 +1,7 @@
 package br.com.bandtec.darksouls;
 
+//aqui, utilizei Classe abstrata pois a classe Despojado não possui os mesmos atributos e metodos
+//que as classes meele e ranged, porém essas duas dividem características semelhantes
 public abstract class Classe implements Personagem {
     private String nome;
     private String dificuldade;
