@@ -114,5 +114,23 @@ public class PersonagemController {
         return personagens.stream().filter(personagem ->
                 personagem.getNome().contains(nome)).collect(Collectors.toList());
     }
+
+    @PostMapping("/classes/rangeds")
+    public String cadastrarRanged(@RequestBody RangedClasse novoPersonagem){
+        personagens.add(novoPersonagem);
+        return "Personagem cadastrado com sucesso!";
+    }
+
+    @PostMapping("/classes/meeles")
+    public String cadastrarMeele(@RequestBody MeeleClasse novoPersonagem){
+        personagens.add(novoPersonagem);
+        return "Personagem cadastrado com sucesso!";
+    }
+
+    @PostMapping("/despojados")
+    public String cadastrarDespojado(@RequestBody Despojado novoPersonagem){
+        personagens.add(novoPersonagem);
+        return "Personagem cadastrado com sucesso!";
+    }
 }
 
