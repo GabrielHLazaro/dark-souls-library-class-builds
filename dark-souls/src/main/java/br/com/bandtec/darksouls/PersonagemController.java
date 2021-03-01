@@ -1,16 +1,13 @@
 package br.com.bandtec.darksouls;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/personagem")
+@RequestMapping("/personagens")
 public class PersonagemController {
     private List<Personagem> personagens = new ArrayList<>();
 
@@ -52,7 +49,7 @@ public class PersonagemController {
                 0, 30, "talisma de canvas"));
     }
 
-    @GetMapping("/todas-builds")
+    @GetMapping
     public List<Personagem> listarTodos() {
         return personagens;
 
@@ -69,7 +66,7 @@ public class PersonagemController {
         return filtro;
     }
 
-    @GetMapping("/classes/meele")
+    @GetMapping("/classes/meeles")
     public List<Personagem> listarClassesMeele(){
         List<Personagem> filtro2 = new ArrayList<>();
         for (Personagem p:personagens) {
@@ -80,7 +77,7 @@ public class PersonagemController {
         return filtro2;
     }
 
-    @GetMapping("/classes/ranged")
+    @GetMapping("/classes/rangeds")
     public List<Personagem> listarClassesRanged(){
         List<Personagem> filtro3 = new ArrayList<>();
         for (Personagem p:personagens) {
@@ -91,10 +88,10 @@ public class PersonagemController {
         return filtro3;
     }
 
-    @GetMapping("/excluir-build/{posicao}")
-    public String excluirClasse(@PathVariable int posicao){
-        if(posicao<=personagens.size()-1){
-            personagens.remove(posicao);
+    @DeleteMapping("/{posicao}")
+    public String excluirPersonagem(@PathVariable int posicao){
+        if(posicao <= personagens.size()-1){
+            personagens.remove(posicao -1);
             return "Build deletada com sucesso!";
         }
         else{
@@ -102,8 +99,18 @@ public class PersonagemController {
         }
     }
 
-    @GetMapping("/pesquisar-build/{nome}")
-    public List<Personagem> pesquisarClasse(@PathVariable String nome){
+    @GetMapping("/{posicao}")
+    public Personagem pesquisarPersonagemPosicao(@PathVariable int posicao){
+        if(posicao -1< personagens.size()){
+            return personagens.get(posicao - 1);
+        }
+        else {
+            return null;
+        }
+    }
+
+    @GetMapping("/{nome}")
+    public List<Personagem> pesquisarPersonagemNome(@PathVariable String nome){
         return personagens.stream().filter(personagem ->
                 personagem.getNome().contains(nome)).collect(Collectors.toList());
     }
